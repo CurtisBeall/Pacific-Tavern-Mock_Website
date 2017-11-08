@@ -12,116 +12,235 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body class="whBackground">
 	<!-- Header Start -->
 	<header>
-		<!-- Menu Start -->
-		<div class="menuContainer fixElement" id="menuContainer">
-			<div class="menuInfo uppCase">
-				<div class="menu">
-					<h3>home</h3>
-					<h3>restaurant</h3>
-					<h3>gallery</h3>
+		<!-- Logo Start -->
+		<div class="logoContainer cenText">
+			<a href=""><img src="img/pacific-light.png" alt="Pacific Tavern Logo" class="logo"></a>
+
+		</div>
+		<!-- Logo End -->
+		<!-- Navigation Start -->
+		<div class="navContainer seBackground grText" id="navContainer">
+			<div class="arrowContainer seBackground">
+				<span class="arrowTop grBackground"></span>
+				<span class="arrowBottom grBackground"></span>
+			</div>
+			<div class="navInfo uppCase">
+				<div class="nav">
+					<a href="#top">
+						<h3>home</h3>
+					</a>
+					<a href="#restaurant">
+						<h3>restaurant</h3>
+					</a>
+					<a href="#gallery">
+						<h3>gallery</h3>
+					</a>
 				</div>
-				<div class="menu logoContainer">
-					<a href=""><img src="../Pacific-Tavern-Mock_Website/img/pacific-light.png" alt="Pacific Tavern Logo" class="logo"></a>
+				<div class="nav logoNav cenText">
+					<a href="index.html"><img src="img/pacific-light.png" alt="Pacific Tavern Logo" class="logo"></a>
 				</div>
-				<div class="menu">
-					<h3>menu</h3>
-					<h3>drinks</h3>
-					<h3>reservations</h3>
+				<div class="nav">
+					<a href="#menu">
+						<h3>menu</h3>
+					</a>
+					<a href="#drinks">
+						<h3>drinks</h3>
+					</a>
+					<a href="#reservations">
+						<h3>reservations</h3>
+					</a>
 				</div>
 			</div>
 		</div>
-		<!-- Menu End -->
+		<!-- Navigation End -->
+
 	</header>
 	<!-- Header End -->
 	<!-- Main Start -->
 	<main>
-		<div class="mainContainer secPadding">
+		<div class="mainContainer">
 			<!-- Main Section Start -->
-			<div class="homeContainer" id="home"  style="background-image: url(img/mainSectionImg.jpg)">
-				<div class="homeInfo">
-					<h1>Modern American Dining</h1>
-					<h3 class="uppCase">locally sourced x crafted with love</h3>
+			<div class="homeContainer padElement cenText cenElement" id="home" style="background-image: url(img/mainSectionImg.jpg)">
+				<div class="homeInfo ">
+					<h1 class="whText">Modern American Dining</h1>
+					<h3 class="uppCase prText">locally sourced x crafted with love</h3>
 				</div>
 			</div>
 			<!-- Main Section End -->
 			<!-- Restaurant Section Start -->
-			<div class="restaurantContainer secPadding" id="restaurant">
+			<div class="restaurantContainer padElement" id="restaurant">
 				<div class="restaurantInfo">
 					<div class="restaurantMain">
 						<h2>Located in Park Slope, Pacific Tavern is a purveyor of fine American dining from the esteemed Chef Billy Lang. </h2>
-						<h3 class="uppCase">photos by nicole franzen</h3>
+						<h3 class="uppCase prText">Details</h3>
 						<h4>
-							<p>Pacific Tavern opened in May 2010 and is located inside the Smith Hotel Brooklyn. Since then, Chef Lang has been serving both quality interpretations of classic dishes and dar ing new ventures into the uncharted territories of food.</p>
-							<p>Pacific Tavern's interior, des igned by the award-winning Hayden Collective, reflects the hip sensibilities of the surrounding area while also paying tribute to Brooklyn·s stor ied past. The multi-level restaurant offers the choice to observe passers-by in the glass-enclosed Cascade Bar on the 2nd floor, or watch the art of cooking as it occurs in the open-kitchen dining room.</p>
+							<p>Pacific Tavern opened in May 2010 and is located inside the Smith Hotel Brooklyn. Since then, Chef Lang has been serving both quality interpretations of classic dishes and daring new ventures into the uncharted territories of food.</p>
+							<p>Pacific Tavern's interior, designed by the award-winning Hayden Collective, reflects the hip sensibilities of the surrounding area while also paying tribute to Brooklyn·s stor ied past. The multi-level restaurant offers the choice to observe passers-by in the glass-enclosed Cascade Bar on the 2nd floor, or watch the art of cooking as it occurs in the open-kitchen dining room.</p>
 						</h4>
 					</div>
-					<div class="restaurantSide secPadding">
-						<h3 class="uppCase">phone</h3>
-						<h4>(347) 555-1234</h4>
-						<h3 class="uppCase">location</h3>
-						<h4>
-							<p>74 5th Avenue</p>
-							<p>at St. Marks Place</p>
-							<p>Brooklyn, NY 11217</p>
-						</h4>
-						<h3 class="uppCase">hours</h3>
-						<h4>
-							<p>M-Th 5p-11p</p>
-							<p>F-Sa 12p -11p</p>
-							<p>Su 1oa-11p</p>
-						</h4>
+					<div class="restaurantSide disFlex sbFlex">
+						<div>
+							<h3 class="uppCase prText">phone</h3>
+							<h4>
+								<p>(347) 555-1234</p>
+							</h4>
+						</div>
+						<div class="test">
+							<h3 class="uppCase prText">location</h3>
+							<h4>
+								<p>74 5th Avenue</p>
+								<p>at St. Marks Place</p>
+								<p>Brooklyn, NY 11217</p>
+							</h4>
+						</div>
+						<div>
+							<h3 class="uppCase prText">hours</h3>
+							<h4>
+								<p>M-Th 5p-11p</p>
+								<p>F-Sa 12p -11p</p>
+								<p>Su 1p-11p</p>
+							</h4>
+						</div>
 					</div>
 				</div>
 			</div>
 			<!-- Restaurant Section End -->
 			<!-- Gallery Section Start -->
-			<div class="galleryContainer secPadding" id="gallery">
-				<div class="reservationsInfo">
+			<div class="galleryContainer padElement" id="gallery">
+				<div class="galleryInfo">
+					<div class="galleryImg">
+						<div class="controls">
+							<div class="leftArrow cenElement">
+								<img src="img/icons/site_icons/arrow_icon.png" alt="" class="arrow">
+							</div>
+							<div class="rightArrow cenElement">
+								<img src="img/icons/site_icons/arrow_icon.png" alt="" class="arrow">
+							</div>
+						</div>
+						<img src="img/gallery/exterior01.jpg" alt="" class="imgGallery imgFocus">
+						<img src="img/gallery/exterior02.jpg" alt="" class="imgGallery imgNext">
+						<img src="img/gallery/interior01.jpg" alt="" class="imgGallery">
+						<img src="img/gallery/interior02.jpg" alt="" class="imgGallery">
+						<img src="img/gallery/interior03.jpg" alt="" class="imgGallery">
+						<img src="img/gallery/interior04.jpg" alt="" class="imgGallery">
+						<img src="img/gallery/interior05.jpg" alt="" class="imgGallery imgPrevious">
+					</div>
+					<h4 class="uppCase grText">photos by nicole franzen</h4>
 				</div>
 			</div>
 			<!-- Gallery Section End -->
 			<!-- Menu Section Start -->
-			<div class="menuContainer secPadding" id="menu">
-				<div class="menuInfo">
-					<div class="menuLogo">
-						<img src="" alt="Pacific Tavern Logo">
-					</div>
+			<div class="menuContainer padElement" id="menu">
+				<div class="menuLogo cenText">
+					<img src="img/pacific-dark.png" alt="Pacific Tavern Logo" class="logo">
+				</div>
+				<div class="menuInfo cenText">
 					<div class="snacksAndSaladsContainer" id="snacksAndSaladsContainer">
-						<h3 class="uppCase">snacks x salads</h3>
-						<div class="item">
-							<div class="itemInfo">
-								<h4>Name</h4>
-								<h5>Ingredents</h5>
+						<h3 class="uppCase prText">snacks x salads</h3>
+						<!--Change sbFlex to cenFlex if group has only 1x item.-->
+						<div class="itemList disFlex sbFlex">
+							<div class="item disFlex sbFlex">
+								<div class="itemInfo lefText">
+									<h3>Name</h3>
+									<h4>
+										Ingredents Ingred Ingredents Ingredents Ingredents Ingredents Ingredents Ingredents
+									</h4>
+								</div>
+								<div class="itemPrice">
+									<h3>Price</h3>
+								</div>
 							</div>
-							<div class="itemPrice">
-								<h5>Price</h5>
+							<div class="item disFlex sbFlex">
+								<div class="itemInfo lefText">
+									<h3>Name</h3>
+									<h4>arugula. cherry tomato. shaved almonds. shallot vinaigrette</h4>
+								</div>
+								<div class="itemPrice">
+									<h3>Price</h3>
+								</div>
+							</div>
+							<div class="item disFlex sbFlex">
+								<div class="itemInfo lefText">
+									<h3>Name</h3>
+									<h4>Ingredents</h4>
+								</div>
+								<div class="itemPrice">
+									<h3>Price</h3>
+								</div>
+							</div>
+							<div class="item disFlex sbFlex">
+								<div class="itemInfo lefText">
+									<h3>Name</h3>
+									<h4>Ingredents</h4>
+								</div>
+								<div class="itemPrice">
+									<h3>Price</h3>
+								</div>
+							</div>
+							<div class="item disFlex sbFlex">
+								<div class="itemInfo lefText">
+									<h3>Name</h3>
+									<h4>Ingredents</h4>
+								</div>
+								<div class="itemPrice">
+									<h3>Price</h3>
+								</div>
+							</div>
+							<div class="item disFlex sbFlex">
+								<div class="itemInfo lefText">
+									<h3>Name</h3>
+									<h4>Ingredents</h4>
+								</div>
+								<div class="itemPrice">
+									<h3>Price</h3>
+								</div>
 							</div>
 						</div>
 					</div>
 					<div class="sandwiches" id="sandwiches">
-						<h3 class="uppCase">sandwiches</h3>
-						<div class="item">
-							<div class="itemInfo">
-								<h4>Name</h4>
-								<h5>Ingredents</h5>
+						<h3 class="uppCase prText">sandwiches</h3>
+						<!--Change sbFlex to cenFlex if group has only 1x item.-->
+						<div class="itemList disFlex sbFlex">
+							<div class="item disFlex sbFlex">
+								<div class="itemInfo lefText">
+									<h3>Name</h3>
+									<h4>
+										Ingredents Ingred Ingredents Ingredents Ingredents Ingredents Ingredents Ingredents Ingredents Ingredents Ingredents Ingredents
+									</h4>
+								</div>
+								<div class="itemPrice">
+									<h3>Price</h3>
+								</div>
 							</div>
-							<div class="itemPrice">
-								<h5>Price</h5>
+												<div class="item disFlex sbFlex">
+								<div class="itemInfo lefText">
+									<h3>Name</h3>
+									<h4>
+										Ingredents Ingred Ingredents Ingredents Ingredents Ingredents Ingredents Ingredents
+									</h4>
+								</div>
+								<div class="itemPrice">
+									<h3>Price</h3>
+								</div>
 							</div>
 						</div>
 					</div>
 					<div class="mains" id="mains">
-						<h3 class="uppCase">mains</h3>
-						<div class="item">
-							<div class="itemInfo">
-								<h4>Name</h4>
-								<h5>Ingredents</h5>
-							</div>
-							<div class="itemPrice">
-								<h5>Price</h5>
+						<h3 class="uppCase prText">mains</h3>
+						<div class="itemList disFlex sbFlex">
+							<div class="item disFlex sbFlex">
+								<div class="itemInfo lefText">
+									<h3>Name</h3>
+									<h4>
+										Ingredents Ingred Ingredents Ingredents Ingredents Ingredents Ingredents Ingredents
+									</h4>
+								</div>
+								<div class="itemPrice">
+									<h3>Price</h3>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -129,44 +248,67 @@
 			</div>
 			<!-- Menu Section End -->
 			<!-- Drinks Section Start -->
-			<div class="drinksContainer secPadding" id="drinks">
-				<div class="drinksInfo">
-					<div class="menuLogo">
-						<img src="" alt="Cascade Bar Logo">
-					</div>
-					<div class="cocktails" id="cocktails">
-						<h3 class="uppCase">cocktails</h3>
-						<div class="item">
-							<div class="itemInfo">
-								<h4>Name</h4>
-								<h5>Ingredents</h5>
+			<div class="drinksContainer padElement" id="drinks" style="background-image: url(img/drinkSectionImg.jpg)">
+				<div class="menuLogo cenText">
+					<img src="img/cascade-logo.png" alt="Cascade Bar Logo" class="logo">
+				</div>
+				<div class="drinksInfo cenText whText">
+					<div id="cocktails">
+						<h3 class="uppCase prText">cocktails</h3>
+						<div class="itemList disFlex cenFlex dwnFlex">
+							<div class="item disFlex sbFlex">
+								<div class="itemInfo lefText">
+									<h3>Name</h3>
+									<h4>
+										Ingredents Ingred Ingredents Ingredents Ingredents Ingredents Ingredents Ingredents
+									</h4>
+								</div>
+								<div class="itemPrice">
+									<h3>Price</h3>
+								</div>
 							</div>
-							<div class="itemPrice">
-								<h5>Price</h5>
+							<div class="item disFlex sbFlex">
+								<div class="itemInfo lefText">
+									<h3>Name</h3>
+									<h4>
+										Ingredents Ingred Ingredents Ingredents Ingredents Ingredents Ingredents Ingredents
+									</h4>
+								</div>
+								<div class="itemPrice">
+									<h3>Price</h3>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="wine" id="wine">
-						<h3 class="uppCase">wine</h3>
-						<div class="item">
-							<div class="itemInfo">
-								<h4>Name</h4>
-								<h5>Ingredents</h5>
-							</div>
-							<div class="itemPrice">
-								<h5>Price</h5>
+					<div class="centerDrink" id="wine">
+						<h3 class="uppCase prText">wine</h3>
+						<div class="itemList disFlex cenFlex dwnFlex">
+							<div class="item disFlex sbFlex">
+								<div class="itemInfo lefText">
+									<h3>Name</h3>
+									<h4>
+										Ingredents Ingred Ingredents Ingredents Ingredents Ingredents Ingredents Ingredents
+									</h4>
+								</div>
+								<div class="itemPrice">
+									<h3>Price</h3>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="beer" id="beer">
-						<h3 class="uppCase">beer</h3>
-						<div class="item">
-							<div class="itemInfo">
-								<h4>Name</h4>
-								<h5>Ingredents</h5>
-							</div>
-							<div class="itemPrice">
-								<h5>Price</h5>
+					<div id="beer">
+						<h3 class="uppCase prText">beer</h3>
+						<div class="itemList disFlex cenFlex dwnFlex">
+							<div class="item disFlex sbFlex">
+								<div class="itemInfo lefText">
+									<h3>Name</h3>
+									<h4>
+										Ingredents Ingred Ingredents Ingredents Ingredents Ingredents Ingredents Ingredents
+									</h4>
+								</div>
+								<div class="itemPrice">
+								</div>
+								<h3>Price</h3>
 							</div>
 						</div>
 					</div>
@@ -174,25 +316,126 @@
 			</div>
 			<!-- Drinks Section End -->
 			<!-- Reservations Section Start -->
-			<div class="reservationsContainer secPadding" id="reservations">
+			<div class="reservationsContainer padElement cenText cenElement" id="reservations">
 				<div class="reservationsInfo">
-					<h3 class="uppCase">reservations</h3>
+					<h3 class="uppCase prText">reservations</h3>
 					<div class="reservationsText">
-						<h4>Call (347) 555-1234 from sa - 11p daily, or book online with Open Table. Reservations required for parties of 6 or more. </h4>
+						<h4>
+							<p>Call (347) 555-1234 from sa - 11p daily, or book online with Open Table.</p>
+							<p>Reservations required for parties of 6 or more.</p>
+						</h4>
 					</div>
-					<button id="reservationsButton">Find A Table</button>
+					<button class="btn whText seBackground bolText" id="reservationsButton">Find A Table</button>
 				</div>
+				<!-- Reservations Modal Start -->
+				<div class="modal whBackground remElement">
+					<div>
+						<h3 class="uppCase prText">Make a reservation</h3>
+					</div>
+					<div>
+						<h3 class="grText">No reservation can exceed 40 guest.</h3>
+					</div>
+					<div class="disFlex sbFlex">
+						<div class="disFlex dwnFlex">
+							<label for="adultGuests"><h3>Adults</h3></label><input class="seOutline" id="adultGuests" type="text">
+						</div>
+						<div class="disFlex dwnFlex">
+							<label for="childGuests"><h3>Children</h3></label><input class="seOutline" id="childGuests" type="text">
+						</div>
+					</div>
+					<div class="disFlex sbFlex">
+						<div class="disFlex dwnFlex">
+							<label for="month"><h3>Date</h3></label>
+							<div class="disFlex sbFlex" id="date">
+								<select name="month" id="" class="seOutline">
+								<option value="">Jan</option>
+								<option value="">Feb</option>
+								<option value="">Mar</option>
+								<option value="">Apr</option>
+								<option value="">May</option>
+								<option value="">Jun</option>
+								<option value="">Jul</option>
+								<option value="">Aug</option>
+								<option value="">Sep</option>
+								<option value="">Oct</option>
+								<option value="">Nov</option>
+								<option value="">Dec</option>
+							</select>
+								<select name="day" id="" class="seOutline">
+								<option value="">01</option>
+								<option value="">02</option>
+								<option value="">03</option>
+								<option value="">04</option>
+								<option value="">05</option>
+								<option value="">06</option>
+								<option value="">07</option>
+								<option value="">08</option>
+								<option value="">09</option>
+								<option value="">10</option>
+								<option value="">11</option>
+								<option value="">12</option>
+								<option value="">13</option>
+								<option value="">14</option>
+								<option value="">15</option>
+								<option value="">16</option>
+								<option value="">17</option>
+								<option value="">18</option>
+								<option value="">19</option>
+								<option value="">20</option>
+								<option value="">21</option>
+								<option value="">22</option>
+								<option value="">23</option>
+								<option value="">24</option>
+								<option value="">25</option>
+								<option value="">26</option>
+								<option value="">27</option>
+								<option value="">28</option>
+								<option value="">29</option>
+								<option value="">30</option>
+								<option value="">31</option>
+							</select>
+								<select name="year" id="" class="seOutline">
+								<option value="">2017</option>
+								<option value="">2018</option>
+							</select>
+							</div>
+						</div>
+						<div class="disFlex dwnFlex">
+							<label for="adultGuests"><h3>Time</h3></label>
+							<select name="time" id="time" class="seOutline">
+								<option value="">9:00 am</option>
+								<option value="">9:30 am</option>
+								<option value="">10:00 am</option>
+								<option value="">10:30 am</option>
+								<option value="">11:00 am</option>
+								<option value="">11:30 am</option>
+							</select>
+						</div>
+					</div>
+					<div class="cenText">
+						<button class="btn seBackground whText bolText">Submit</button>
+					</div>
+					<span class="cenText">
+						<h4 class="grText">For questions contact us at <br> (347) 555-1234 /
+				<a href="mailto:template.placeholder@gamil.com?Subject=Reservation%20Question" target="_top"  class="bolText">template.placeholder@gamil.com</a>
+			</h4>
+					</span>
+				</div>
+				<!-- Reservations Modal End -->
 			</div>
 			<!-- Reservations Section End -->
 		</div>
 	</main>
 	<!-- Main End -->
 	<!-- Footer Start -->
-	<div class="footerContainer">
-		<div class="footerInfo uppCase">
-			<h4>pacific tavern,74 5th avenue,</h4>
-			<h4>brooklyn, ny 11217</h4>
-			<h4>(347) 555-1234</h4>
+	<div class="footerContainer whText seBackground cenText padElement">
+		<div class="footerInfo uppCase disFlex cenFlex">
+			<h4>pacific tavern, 74 5th avenue,</h4>
+			<h4> brooklyn, ny 11217 </h4>
+			<h4> (347) 555-1234 </h4>
+			<h4>
+				<a href="mailto:template.placeholder@gamil.com?Subject=Reservation%20Question" target="_top" class="grText bolText">template.placeholder@gamil.com</a>
+			</h4>
 		</div>
 	</div>
 	<!-- Footer End -->
