@@ -1,96 +1,219 @@
-// Drop Down Menu Function
-(function() {
-	const toggle = document.getElementById("c-hamburger");
-	const hide = document.getElementById("nav-bar");
+/////////////////////////////////////////
+//Hide Header Background When At Top
+/////////////////////////////////////////
+//Hide Background On Load
+window.onload = function () {
+	hideHeader();
+}
 
-	toggle.addEventListener( "click", function(e) {
-	e.preventDefault();
-	(this.classList.contains("is-active") === true) ? this.classList.remove("is-active") : this.classList.add("is-active");
-	(hide.classList.contains("hidden") === true) ? hide.classList.remove("hidden") : hide.classList.add("hidden");
-	});
-})();
+//Check On Scroll
+$(window).scroll(hideHeader);	
 
-//Setup About Page Before Load Function
-window.onbeforeunload = () => {
+//Hide Header Background When At Top
+function hideHeader() {
+	let scrollPos = $(window).scrollTop();
+	let windowWidth = $(window).width();
 	
-	const about = 'file:///C:/Users/Curtis/Documents/Git%20Repos/Splash/about.html';
+	//Check Window Location and width
+	if (scrollPos < 50 && windowWidth > 925) {
+		//Hide Background
+		$("#navContainer").addClass("clBackground");
+	} else {
+		//Add Background
+		$("#navContainer").removeClass("clBackground");
+	}
+}
+
+/////////////////////////////////////////
+//Open/Close Navigation
+/////////////////////////////////////////
+//Open Navigation 
+$("#open").click(menuOpen);
+
+//Close Navigation
+$("#close").click(menuClose);
+$("main").click(menuClose);
+
+//Open Navigation Function
+function menuOpen() {
+
+	$(".navContainer").addClass("navContainerOpen");
+	$(".arrows").addClass("arrowsOpen");
+	$(".arrowTop").addClass("arrowTopOpen");
+	$(".arrowBottom").addClass("arrowBottomOpen");
+	$("body").addClass("bgFreeze");
+	$("main").addClass("bgDarken");
+	$("#open").attr("id","close");
+	$( "#open").unbind( "click", menuOpen );
+	$( "#close").bind( "click", menuClose );
 	
-     if (window.location.href === about) {
-		window.scrollTo(0,0);
-	 }
-};
+}
 
-//Setup About Page Onload Function
-window.onload = () => {
+//Close Navigation Function
+function menuClose() {
 	
-	const about = 'file:///C:/Users/Curtis/Documents/Git%20Repos/Splash/about.html';
+	$(".navContainer").removeClass("navContainerOpen");
+	$(".arrows").removeClass("arrowsOpen");
+	$(".arrowTop").removeClass("arrowTopOpen");
+	$(".arrowBottom").removeClass("arrowBottomOpen");
+	$("body").removeClass("bgFreeze");
+	$("main").removeClass("bgDarken");
+	$("#close").attr("id","open");
+	$( "#close").unbind( "click",  menuClose );
+	$( "#open").bind( "click", menuOpen );
 	
-     if (window.location.href === about) {
-		window.scrollBy(0,1);
-	 }
-};
+}
 
+/////////////////////////////////////////
+//Open Reservation Modal
+/////////////////////////////////////////
+//Open Reservation Modal 
+$("#reservationsButton").click(modalOpen);
+$("#reservationsButton").click(setCurrentDate);
 
-//About Page Text Scroll Var
+//Close Reservation Modal
+$("main").click(modalClose);
 
-	let scrollToggle = 1;
-	let spanlife = -52;
-	let lastScrollY = 0;
+//Open Reservation Modal Function
+function modalOpen() {
+    event.stopPropagation();
 
-//About Page Text Scroll Function
-window.onscroll = () => {
-	if (window.innerWidth > 626) {
-	const staff_textR = document.getElementsByClassName("staff_textbg align-r");
-	const staff_textL = document.getElementsByClassName("staff_textbg align-l");
+	$("#reservationModal").removeClass("remElement");
+	$("body").addClass("bgFreeze");
+	$("main").addClass("bgDarken");
+}
+
+//Close Reservation Modal Function
+function modalClose() {
+
+	$("#reservationModal").addClass("remElement");
+	$("body").removeClass("bgFreeze");
+	$("main").removeClass("bgDarken");
+}
+
+/////////////////////////////////////////
+//Set Reservation Date Current Date
+/////////////////////////////////////////
+//Get Current Date
+function setCurrentDate() {
+	let date = new Date();
+	let year = date.getFullYear();
+	let month = date.getMonth();
+	let day = date.getDate();
 	
-	let newScroll = (scrollY * 100 / document.documentElement.scrollHeight);
-	let lastScroll = (lastScrollY * 100 / document.documentElement.scrollHeight);
-	let scrollYPercent = (newScroll - lastScroll)*1.25;
-	let span = spanlife;
-	let spanL = spanlife+50;
 
-	for (var i = 0; i < staff_textR.length; i++) {
-		
-		if(span < -53 ) {
-			
-			(scrollToggle === 1 ) ?  scrollToggle = 0: scrollToggle = 1;
-			
-		} if(span > 2) {
-			
-			(scrollToggle === 0 ) ?  scrollToggle = 1: scrollToggle = 0;
-			
-		} if(scrollToggle === 0) {
-			
-			(lastScroll < newScroll) ?  span -= scrollYPercent : span -= scrollYPercent;
-			(lastScroll < newScroll) ?  lastScrollY = scrollY: lastScrollY = scrollY;
-			spanlife = span;	
-			staff_textR[i].style.transform = "translateY(-50%) translateX(" + span + "%)";
+	
+//Set The Current Date
+	$("#year").prop('selectedIndex', 0);
+	$("#month").prop('selectedIndex', 0);
+	$("#day").prop('selectedIndex', day-1);
+	
+	createYearLists()
+	createMonthLists()
+	createDayLists()
+}
 
-		} if(scrollToggle === 1) {
-			
-			(lastScroll > newScroll) ?  span += scrollYPercent : span += scrollYPercent;
-			(lastScroll > newScroll) ?  lastScrollY = scrollY: lastScrollY = scrollY;
-			spanlife = span;
-			staff_textR[i].style.transform = "translateY(-50%) translateX(" + span + "%)";
+
+/////////////////////////////////////////
+//Create Reservation Date Lists
+/////////////////////////////////////////
+$("#year").change(createMonthLists);
+$("#year").change(createDayLists);
+$("#month").change(createDayLists);
+
+//Create Select Year Lists
+function createYearLists() {
+	let date = new Date();
+	let year = date.getFullYear();
+	let yearInput = document.getElementById('year');
+
+	//Add Years To Years List
+	yearInput.innerHTML = ''
+	for (i = 0; i < 3; i++) {
+		yearInput.innerHTML += '<option>' + (year + i) + '</option>'
+	}
+}
+
+//Create Select Month Lists
+function createMonthLists() {
+	let date = new Date();
+	let year = date.getFullYear();
+	let monthInput = document.getElementById('month');
+	let selectedMonth = $("#month").prop('selectedIndex');
+	let selectedYear = parseInt($("#year").find(":selected").text());
+	let monthList = [];
+	
+	//Create Month List
+	//If the year selected matchs current year
+	if (year === selectedYear) {
+		while (date.getFullYear() === selectedYear) {
+			monthList.push(date.toString().substring(7,3));
+			date.setMonth(date.getMonth()+1);
 		}
+		date = new Date();
+	//If the year selected doesn't match current year
+	} else if (year !== selectedYear) {
+		date = new Date(selectedYear, 0, 1);
+		while (date.getFullYear() === selectedYear) {
+			monthList.push(date.toString().substring(7,3));
+			date.setMonth(date.getMonth()+1);
+		}
+	}
 
+	//Add Months To Months List
+	monthInput.innerHTML = ''
+	for (i = 0; i < monthList.length; i++) {
+		monthInput.innerHTML += '<option>' + monthList[i] + '</option>'
+	}
+}
+
+//Create Select Day Lists
+function createDayLists() {
+	let date = new Date();
+	let month = date.getMonth();
+	let dayInput = document.getElementById('day');
+	let selectedMonth = $("#month").prop('selectedIndex');
+	let selectedYear = parseInt($("#year").find(":selected").text());
+	let dayList = [];
+
+	//Adjust current month index number for current year
+	selectedMonth = 12 - $('#month option').length + selectedMonth;
+	
+	//Create Day List
+	//If the month selected matchs current month
+	if (month === selectedMonth && date.getFullYear() === selectedYear) {
+		while (date.getMonth() === selectedMonth) {
+			dayList.push(date.getDate());
+			date.setDate(date.getDate() + 1);
+		}
+	//If the month selected doesn't match current month
+	} else if (month !== selectedMonth || date.getFullYear() !== selectedYear) {
+		date = new Date(selectedYear, selectedMonth, 1);
+		while (date.getMonth() === selectedMonth) {
+			dayList.push(date.getDate());
+			date.setDate(date.getDate() + 1);
+		}
 	}
 	
-
-	for (var i = 0; i < staff_textL.length; i++) {
-
-	if(scrollToggle === 0) {
-
-			(lastScroll < newScroll) ?  spanL -= scrollYPercent : spanL -= scrollYPercent;
-			staff_textL[i].style.transform = "translateY(-50%) translateX(" + spanL + "%)";
-
-		} if(scrollToggle === 1) {
-			
-			(lastScroll > newScroll) ?  spanL += scrollYPercent : spanL += scrollYPercent;
-			staff_textL[i].style.transform = "translateY(-50%) translateX(" + spanL + "%)";
-			
-		}
-
+	//Add Days To Days List
+	dayInput.innerHTML = ''
+	for (i = 0; i < dayList.length; i++) {
+		dayInput.innerHTML += '<option>' + dayList[i] + '</option>'
 	}
-	}
-};
+}
+/////////////////////////////////////////
+//Submit Reservation
+/////////////////////////////////////////
+	//Check Reservation
+		//Check Date
+		//Check Guests Count
+	//Submit Reservation
+	//Confirm Reservation
+		//Replace HTML Text
+
+/////////////////////////////////////////
+//Add Items To Menu and Drinks
+/////////////////////////////////////////
+	//Check Item Type
+	//Add To Menu HTML
+	//Add To Drinks HTML

@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<meta name="description" content="Splash">
+	<meta name="description" content="Pacific Tavern">
 	<meta name="keywords" content="Pacific, Tavern, Restaurant, Food, Beer">
 	<meta name="author" content="Curtis Beall">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,9 +23,9 @@
 		<!-- Logo End -->
 		<!-- Navigation Start -->
 		<div class="navContainer seBackground grText" id="navContainer">
-			<div class="arrowContainer seBackground">
-				<span class="arrowTop grBackground"></span>
-				<span class="arrowBottom grBackground"></span>
+			<div class="arrowContainer seBackground" id="open">
+				<span class="arrows arrowTop grBackground"></span>
+				<span class="arrows arrowBottom grBackground"></span>
 			</div>
 			<div class="navInfo uppCase">
 				<div class="nav">
@@ -109,7 +109,7 @@
 			</div>
 			<!-- Restaurant Section End -->
 			<!-- Gallery Section Start -->
-			<div class="galleryContainer padElement" id="gallery">
+			<div class="galleryContainer " id="gallery">
 				<div class="galleryInfo">
 					<div class="galleryImg">
 						<div class="controls">
@@ -128,8 +128,8 @@
 						<img src="img/gallery/interior04.jpg" alt="" class="imgGallery">
 						<img src="img/gallery/interior05.jpg" alt="" class="imgGallery imgPrevious">
 					</div>
-					<h4 class="uppCase grText">photos by nicole franzen</h4>
 				</div>
+				<h4 class="uppCase grText">photos by nicole franzen</h4>
 			</div>
 			<!-- Gallery Section End -->
 			<!-- Menu Section Start -->
@@ -321,112 +321,81 @@
 					<h3 class="uppCase prText">reservations</h3>
 					<div class="reservationsText">
 						<h4>
-							<p>Call (347) 555-1234 from sa - 11p daily, or book online with Open Table.</p>
+							<p>Call (347) 555-1234 from 5a - 11p daily, or book online.</p>
 							<p>Reservations required for parties of 6 or more.</p>
 						</h4>
 					</div>
 					<button class="btn whText seBackground bolText" id="reservationsButton">Find A Table</button>
 				</div>
-				<!-- Reservations Modal Start -->
-				<div class="modal whBackground remElement">
-					<div>
-						<h3 class="uppCase prText">Make a reservation</h3>
-					</div>
-					<div>
-						<h3 class="grText">No reservation can exceed 40 guest.</h3>
-					</div>
-					<div class="disFlex sbFlex">
-						<div class="disFlex dwnFlex">
-							<label for="adultGuests"><h3>Adults</h3></label><input class="seOutline" id="adultGuests" type="text">
-						</div>
-						<div class="disFlex dwnFlex">
-							<label for="childGuests"><h3>Children</h3></label><input class="seOutline" id="childGuests" type="text">
-						</div>
-					</div>
-					<div class="disFlex sbFlex">
-						<div class="disFlex dwnFlex">
-							<label for="month"><h3>Date</h3></label>
-							<div class="disFlex sbFlex" id="date">
-								<select name="month" id="" class="seOutline">
-								<option value="">Jan</option>
-								<option value="">Feb</option>
-								<option value="">Mar</option>
-								<option value="">Apr</option>
-								<option value="">May</option>
-								<option value="">Jun</option>
-								<option value="">Jul</option>
-								<option value="">Aug</option>
-								<option value="">Sep</option>
-								<option value="">Oct</option>
-								<option value="">Nov</option>
-								<option value="">Dec</option>
-							</select>
-								<select name="day" id="" class="seOutline">
-								<option value="">01</option>
-								<option value="">02</option>
-								<option value="">03</option>
-								<option value="">04</option>
-								<option value="">05</option>
-								<option value="">06</option>
-								<option value="">07</option>
-								<option value="">08</option>
-								<option value="">09</option>
-								<option value="">10</option>
-								<option value="">11</option>
-								<option value="">12</option>
-								<option value="">13</option>
-								<option value="">14</option>
-								<option value="">15</option>
-								<option value="">16</option>
-								<option value="">17</option>
-								<option value="">18</option>
-								<option value="">19</option>
-								<option value="">20</option>
-								<option value="">21</option>
-								<option value="">22</option>
-								<option value="">23</option>
-								<option value="">24</option>
-								<option value="">25</option>
-								<option value="">26</option>
-								<option value="">27</option>
-								<option value="">28</option>
-								<option value="">29</option>
-								<option value="">30</option>
-								<option value="">31</option>
-							</select>
-								<select name="year" id="" class="seOutline">
-								<option value="">2017</option>
-								<option value="">2018</option>
-							</select>
-							</div>
-						</div>
-						<div class="disFlex dwnFlex">
-							<label for="adultGuests"><h3>Time</h3></label>
-							<select name="time" id="time" class="seOutline">
-								<option value="">9:00 am</option>
-								<option value="">9:30 am</option>
-								<option value="">10:00 am</option>
-								<option value="">10:30 am</option>
-								<option value="">11:00 am</option>
-								<option value="">11:30 am</option>
-							</select>
-						</div>
-					</div>
-					<div class="cenText">
-						<button class="btn seBackground whText bolText">Submit</button>
-					</div>
-					<span class="cenText">
-						<h4 class="grText">For questions contact us at <br> (347) 555-1234 /
-				<a href="mailto:template.placeholder@gamil.com?Subject=Reservation%20Question" target="_top"  class="bolText">template.placeholder@gamil.com</a>
-			</h4>
-					</span>
-				</div>
-				<!-- Reservations Modal End -->
 			</div>
 			<!-- Reservations Section End -->
 		</div>
 	</main>
 	<!-- Main End -->
+<!-- Reservations Modal Start -->
+<div class="modal whBackground remElement" id="reservationModal">
+	<div>
+		<h3 class="uppCase prText">Make a reservation</h3>
+	</div>
+	<div>
+		<h3 class="grText">No reservation can exceed 40 guest.</h3>
+	</div>
+	<div class="disFlex sbFlex">
+		<div class="disFlex dwnFlex">
+			<label for="adultGuests"><h3>Adults</h3></label><input class="seOutline" id="adultGuests" type="text">
+		</div>
+		<div class="disFlex dwnFlex">
+			<label for="childGuests"><h3>Children</h3></label><input class="seOutline" id="childGuests" type="text">
+		</div>
+	</div>
+	<div class="disFlex sbFlex">
+		<div class="disFlex dwnFlex">
+			<label for="month"><h3>Date</h3></label>
+			<div class="disFlex sbFlex" id="date">
+			<select name="month" id="month" class="seOutline">
+				<option value="">Jan</option>
+				<option value="">Feb</option>
+				<option value="">Mar</option>
+				<option value="">Apr</option>
+				<option value="">May</option>
+				<option value="">Jun</option>
+				<option value="">Jul</option>
+				<option value="">Aug</option>
+				<option value="">Sep</option>
+				<option value="">Oct</option>
+				<option value="">Nov</option>
+				<option value="">Dec</option>
+			</select>
+			<select name="day" id="day" class="seOutline">
+			</select>
+			<select name="year" id="year" class="seOutline">
+				<option value="">2017</option>
+				<option value="">2018</option>
+			</select>
+			</div>
+		</div>
+		<div class="disFlex dwnFlex">
+			<label for="adultGuests"><h3>Time</h3></label>
+			<select name="time" id="time" class="seOutline">
+				<option value="">9:00 am</option>
+				<option value="">9:30 am</option>
+				<option value="">10:00 am</option>
+				<option value="">10:30 am</option>
+				<option value="">11:00 am</option>
+				<option value="">11:30 am</option>
+			</select>
+		</div>
+	</div>
+	<div class="cenText">
+		<button class="btn seBackground whText bolText">Submit</button>
+	</div>
+	<span class="cenText">
+		<h4 class="grText">For questions contact us at <br> (347) 555-1234 /
+			<a href="mailto:template.placeholder@gamil.com?Subject=Reservation%20Question" target="_top"  class="bolText">template.placeholder@gamil.com</a>
+		</h4>
+	</span>
+</div>
+<!-- Reservations Modal End -->
 	<!-- Footer Start -->
 	<div class="footerContainer whText seBackground cenText padElement">
 		<div class="footerInfo uppCase disFlex cenFlex">
