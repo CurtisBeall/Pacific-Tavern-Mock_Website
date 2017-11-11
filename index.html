@@ -215,7 +215,7 @@
 									<h3>Price</h3>
 								</div>
 							</div>
-												<div class="item disFlex sbFlex">
+							<div class="item disFlex sbFlex">
 								<div class="itemInfo lefText">
 									<h3>Name</h3>
 									<h4>
@@ -332,70 +332,61 @@
 		</div>
 	</main>
 	<!-- Main End -->
-<!-- Reservations Modal Start -->
-<div class="modal whBackground remElement" id="reservationModal">
-	<div>
-		<h3 class="uppCase prText">Make a reservation</h3>
-	</div>
-	<div>
-		<h3 class="grText">No reservation can exceed 40 guest.</h3>
-	</div>
-	<div class="disFlex sbFlex">
-		<div class="disFlex dwnFlex">
-			<label for="adultGuests"><h3>Adults</h3></label><input class="seOutline" id="adultGuests" type="text">
+	<!-- Reservations Modal Start -->
+	<form>
+	<div class="modal whBackground remElement" id="reservationModal">
+		<div>
+			<h3 class="uppCase prText">Make a reservation</h3>
 		</div>
-		<div class="disFlex dwnFlex">
-			<label for="childGuests"><h3>Children</h3></label><input class="seOutline" id="childGuests" type="text">
+		<div>
+			<h3 class="grText" id="exceedWarning">Reservations must be 2 to 40 guests and have at least 1 adult.</h3>
 		</div>
-	</div>
-	<div class="disFlex sbFlex">
-		<div class="disFlex dwnFlex">
-			<label for="month"><h3>Date</h3></label>
-			<div class="disFlex sbFlex" id="date">
-			<select name="month" id="month" class="seOutline">
-				<option value="">Jan</option>
-				<option value="">Feb</option>
-				<option value="">Mar</option>
-				<option value="">Apr</option>
-				<option value="">May</option>
-				<option value="">Jun</option>
-				<option value="">Jul</option>
-				<option value="">Aug</option>
-				<option value="">Sep</option>
-				<option value="">Oct</option>
-				<option value="">Nov</option>
-				<option value="">Dec</option>
+		<div class="disFlex sbFlex">
+			<div class="disFlex dwnFlex fullBar">
+				<label class="disFlex" for="underName" id="nameLabel"><h3>Name</h3></label><input class="seOutline fullBar" id="underName" type="text">
+			</div>
+			<div class="disFlex dwnFlex fullBar">
+				<label class="disFlex" for="email" id="emailLabel"><h3>Email</h3></label><input class="seOutline fullBar" id="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Example: email@domain.com">
+			</div>
+			<div class="disFlex dwnFlex fullBar">
+				<label class="disFlex" for="phone" id="phoneLabel"><h3>Phone</h3></label><input class="seOutline fullBar" id="phone" type="tel" pattern="[(][0-9]{3}[/|)][.|-][0-9]{3}[.|-][0-9]{4}|[0-9]{3}[.|-][0-9]{3}[.|-][0-9]{4}" title="Example: (###)###-#### or ###.###.####">
+			</div>
+			<div class="disFlex dwnFlex">
+				<label class="disFlex" for="adultGuests" id="adultLabel"><h3>Adults</h3></label><input class="seOutline halfbar" id="adultGuests" type="text">
+			</div>
+			<div class="disFlex dwnFlex">
+				<label class="disFlex" for="kidGuests" id="kidLabel"><h3>Kids</h3></label><input class="seOutline halfbar" id="kidGuests" type="text">
+			</div>
+		</div>
+		<div class="disFlex sbFlex">
+			<div class="disFlex dwnFlex">
+				<label for="month"><h3>Date</h3></label>
+				<div class="disFlex sbFlex" id="date">
+					<select name="month" id="month" class="seOutline">
 			</select>
-			<select name="day" id="day" class="seOutline">
+					<select name="day" id="day" class="seOutline">
 			</select>
-			<select name="year" id="year" class="seOutline">
-				<option value="">2017</option>
-				<option value="">2018</option>
+					<select name="year" id="year" class="seOutline">
+			</select>
+				</div>
+			</div>
+			<div class="disFlex dwnFlex">
+				<label for="time"><h3>Time</h3></label>
+				<select name="time" id="time" class="seOutline">
 			</select>
 			</div>
 		</div>
-		<div class="disFlex dwnFlex">
-			<label for="adultGuests"><h3>Time</h3></label>
-			<select name="time" id="time" class="seOutline">
-				<option value="">9:00 am</option>
-				<option value="">9:30 am</option>
-				<option value="">10:00 am</option>
-				<option value="">10:30 am</option>
-				<option value="">11:00 am</option>
-				<option value="">11:30 am</option>
-			</select>
+		<div class="cenText">
+			<button class="btn seBackground whText bolText" type="submit" onclick="checkReservation()">Submit</button>
 		</div>
-	</div>
-	<div class="cenText">
-		<button class="btn seBackground whText bolText">Submit</button>
-	</div>
-	<span class="cenText">
+		<span class="cenText">
 		<h4 class="grText">For questions contact us at <br> (347) 555-1234 /
 			<a href="mailto:template.placeholder@gamil.com?Subject=Reservation%20Question" target="_top"  class="bolText">template.placeholder@gamil.com</a>
 		</h4>
 	</span>
-</div>
-<!-- Reservations Modal End -->
+	</div>
+	</form>
+	<!-- Reservations Modal End -->
 	<!-- Footer Start -->
 	<div class="footerContainer whText seBackground cenText padElement">
 		<div class="footerInfo uppCase disFlex cenFlex">
@@ -412,6 +403,7 @@
 <!-- Javascript Section Start -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="js/script.js"></script>
+<script src="js/lists.js"></script>
 <!-- Javascript Section End -->
 
 </html>

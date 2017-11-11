@@ -171,6 +171,18 @@
 	border: none;
 }
 
+.warning {
+	align-self: flex-end; 
+	margin-bottom: .1rem; 
+	margin-left: .5rem; 
+	color: red;
+}
+
+.warningBox {
+	box-shadow: 0 0 0 .2rem red;
+	outline: .2rem red solid;
+}
+
 .bgFreeze {
     overflow: hidden;
 }
@@ -559,15 +571,17 @@ a, button {
 .modal {
 	width: 95%;
 	max-width: 22rem;
+	max-height: 100vh;
 	position: fixed;
 	top: 50%;
 	-webkit-transform: translateY(-50%);
 	transform: translateY(-50%);
 	left: 0;
 	right: 0;
-	margin: 0 auto;
+	margin: 1rem auto;
 	padding: .5rem 1rem;
 	z-index: 999;
+	overflow-y: auto;
 }
 
 .modal label {
@@ -575,15 +589,32 @@ a, button {
 }
 
 .modal div {
-	margin-bottom: .4rem;
+	margin-bottom: .5rem;
 }
 
-.modal input {
+.halfbar {
 	max-width: 8rem;
 }
 
-#time input {
+.fullBar {
+	width: 100%;
+	max-width: 100%;
+}
+
+#time {
 	max-width: 6rem;
+}
+
+.modal::-webkit-scrollbar {
+    width: 1rem;
+}
+
+.modal::-webkit-scrollbar-track {
+    background: darkgray; 
+}
+
+.modal::-webkit-scrollbar-thumb {
+    background: gray; 
 }
 
 .modal input,
