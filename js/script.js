@@ -90,70 +90,55 @@ function modalClose() {
 	let phone = $('#phone');
 	let adultGuests = $('#adultGuests');
 	let kidGuests = $('#kidGuests');
-	let info = [name,
-				email,
-				phone,
-				adultGuests,
-				kidGuests
-			   ]
 
-	for (i = 0; i < info.length; i++) {
-		clearFields(info[i]);
-	}
-
-	clearWarnings()
 	$("body").removeClass("bgFreeze");
 	$("main").removeClass("bgDarken");
 	$("#reservationModal").addClass("remElement");
+	location.reload();
 }
 
-function clearFields(field) {
-	field.val("");
-}
-
-function clearWarnings() {
-	$("#remove").remove();
-	$("#exceedWarning").removeClass("warning bolText");
-	$('#underName').removeClass("warningBox");
-	$('#email').removeClass("warningBox");
-	$('#phone').removeClass("warningBox");
-	$('#adultGuests').removeClass("warningBox");
-	$('#kidGuests').removeClass("warningBox");
-}
 
 
 /////////////////////////////////////////
 //Set Reservation Date Current Date
 /////////////////////////////////////////
 //Get Current Date
-function setCurrentDate() {
-	let date = new Date();
-	let year = date.getFullYear();
-	let month = date.getMonth();
-	let day = date.getDate();
+function setCurrentDate(e) {
+	//Add any date into the "new Date()" to change reservation date range
+	let currentDate = new Date();
+	let currentYear = currentDate.getFullYear();
+	let currentMonth = currentDate.getMonth();
+	let currentDay = currentDate.getDate();
+	let elementClick = $(e).attr("id");
 
-	createYearLists()
-	createMonthLists()
-	createDayLists()
+	if (elementClick === $("#year").attr("id")) {
+		createMonthLists(currentDate, currentYear, currentMonth, currentDay)
+		currentDate = new Date(currentYear, currentMonth, currentDay);
+		createDayLists(currentDate, currentMonth, currentDay)
+	} else if (elementClick === $("#month").attr("id")) {
+		createDayLists(currentDate, currentMonth, currentDay)
+		currentDate = new Date(currentYear, currentMonth, currentDay);
+	} else if (elementClick === $("#day").attr("id")) {
+		addTimeLists()
+	} else {
+		createYearLists(currentDate, currentYear)
+		currentDate = new Date(currentYear, currentMonth, currentDay);
+		createMonthLists(currentDate, currentYear, currentMonth, currentDay)
+		currentDate = new Date(currentYear, currentMonth, currentDay);
+		createDayLists(currentDate, currentMonth, currentDay)
+		currentDate = new Date(currentYear, currentMonth, currentDay);
+	}
 
-	//Set The Current Date
-	$("#year").prop('selectedIndex', 0);
-	$("#month").prop('selectedIndex', 0);
-	$("#day").prop('selectedIndex', 0);
 }
 
 
 /////////////////////////////////////////
 //Create Reservation Date Lists
 /////////////////////////////////////////
-$("#year").change(createMonthLists);
-$("#month").change(createDayLists);
-$("#day").change(addTimeLists);
-
 //Create Select Year Lists
-function createYearLists() {
-	let date = new Date();
-	let year = date.getFullYear();
+function createYearLists(currentDate, currentYear) {
+	let date = currentDate;
+	let year = currentYear;
 	let yearInput = document.getElementById('year');
 
 	//Add Years To Years List
@@ -170,14 +155,13 @@ function monthAdjustIndex(e) {
 }
 
 //Create Select Month Lists
-function createMonthLists() {
-	let date = new Date();
-	let year = date.getFullYear();
+function createMonthLists(currentDate, currentYear, currentMonth, currentDay) {
+	let date = currentDate;
+	let year = currentYear;
 	let monthInput = document.getElementById('month');
 	let selectedYear = parseInt($("#year option:selected").text());
 	let selectedMonth = parseInt($("#month").prop('selectedIndex'));
 	let monthList = [];
-
 
 	//Create Month List
 	//If the year selected matchs current year
@@ -187,6 +171,7 @@ function createMonthLists() {
 			monthList.push(date.toString().substring(7, 3));
 			date.setMonth(date.getMonth() + 1);
 		}
+
 		//Adjust month index #s when current year is being selected
 		selectedMonth = -12 + selectedMonth + monthList.length;
 		if (selectedMonth < 0) {
@@ -211,25 +196,26 @@ function createMonthLists() {
 
 	//Set The Current Selected Month
 	$("#month").prop('selectedIndex', selectedMonth);
-	createDayLists()
+
 }
 
 //Create Select Day Lists
-function createDayLists() {
-	let date = new Date();
-	let month = date.getMonth();
-	let day = date.getDate() - 1;
+function createDayLists(currentDate, currentMonth, currentDay) {
+	let date = currentDate;
+	let month = currentMonth;
+	let day = currentDay;
 	let dayInput = document.getElementById('day');
 	let selectedYear = parseInt($("#year option:selected").text());
 	let selectedMonth = parseInt($("#month").prop('selectedIndex'));
 	let selectedDay = $("#day").prop('selectedIndex');
 	let dayList = [];
 
+
 	//Adjust month index numbers when current year is selected
 	selectedMonth = monthAdjustIndex(selectedMonth)
 
 	//Create Day List
-	//If the month selected matchs current month being selected
+	//If the month and year selected matchs current month and year being selected
 	if (month === selectedMonth && date.getFullYear() === selectedYear) {
 		date.setDate(date.getDate() + 1);
 
@@ -247,6 +233,7 @@ function createDayLists() {
 		//If the month selected doesn't match current month
 	} else if (month !== selectedMonth || date.getFullYear() !== selectedYear) {
 		date = new Date(selectedYear, selectedMonth, 1);
+
 		while (date.getMonth() === selectedMonth) {
 			dayList.push(date.getDate());
 			date.setDate(date.getDate() + 1);
@@ -312,9 +299,6 @@ function addTimeLists() {
 $('#adultGuests').keyup(guestsValidation)
 $('#kidGuests').keyup(guestsValidation)
 $('#phone').keyup(phoneValidation)
-//$('#adultGuests').focusin(validation)
-//$('#kidGuests').focusin(validation)
-//$('#phone').focusin(validation)
 
 function guestsValidation() {
 	let adultGuests = $('#adultGuests');
@@ -415,6 +399,17 @@ function checkReservation() {
 	}
 }
 
+//Clear All Warnings
+function clearWarnings() {
+	$("#remove").remove();
+	$("#exceedWarning").removeClass("warning bolText");
+	$('#underName').removeClass("warningBox");
+	$('#email').removeClass("warningBox");
+	$('#phone').removeClass("warningBox");
+	$('#adultGuests').removeClass("warningBox");
+	$('#kidGuests').removeClass("warningBox");
+}
+
 //Check Info
 function checkInfo(info) {
 	let check = false;
@@ -424,20 +419,38 @@ function checkInfo(info) {
 	} else {
 		check = true
 	}
+		check = true
 	return check;
 }
 
 //Confirm Reservation
 function confirmReservation() {
- alert("good job");
+console.log("goodJob")
+
+	let modal = document.getElementById('reservationModal');
+
+	let selectedYear = parseInt($("#year option:selected").text());
+	let selectedMonth = $("#month").prop('selectedIndex');
+	let selectedDay = parseInt($("#day option:selected").text());
+	let adultCount = parseInt(0 + $("#adultGuests").val());
+	let kidCount = parseInt(0 + $("#kidGuests").val());
+	let total = adultCount + kidCount;
+	
+	selectedMonth = monthAdjustIndex(selectedMonth)
+	let date = new Date(selectedYear, selectedMonth, selectedDay);
+	let dayName = date.toString().substring(0, 3);
+	selectedMonth = date.toString().substring(7, 3);
+
+
+	modal.innerHTML = '';
+	modal.innerHTML = '<div>' +
+				'<h3 class="uppCase prText ligText">Reservation Made</h3>' +
+			'</div>' +
+			'<div>' +
+				"<h3 id='exceedWarning'>You'r reservation for " + total + ' guests on' + '<br>' + dayName + ' ' + selectedMonth + ' ' +selectedDay + ', ' + selectedYear + " has been created. <br> We can't wait to see you.</h3>" +
+			'</div>';
 }
-//<div class="modal whBackground remElement" id="reservationModal">
-//	<div>
-//		<h3 class="uppCase prText">Make a reservation</h3>
-//	</div>
-//	<div>
-//		<h3 class="grText" id="exceedWarning">No reservation can exceed 40 guest.</h3>
-//	</div>
+
 
 
 
