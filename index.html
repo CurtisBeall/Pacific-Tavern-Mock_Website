@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="whBackground">
+<body class="whBackground" id="test">
 	<!-- Header Start -->
 	<header>
 		<!-- Logo Start -->
@@ -29,7 +29,7 @@
 			</div>
 			<div class="navInfo uppCase">
 				<div class="nav">
-					<a href="#top">
+					<a href="#home" class="selected">
 						<h3>home</h3>
 					</a>
 					<a href="#restaurant">
@@ -113,10 +113,10 @@
 				<div class="galleryInfo">
 					<div class="galleryImg">
 						<div class="controls">
-							<div class="leftArrow cenElement">
-								<img src="img/icons/site_icons/arrow_icon.png" alt="" class="arrow">
+							<div class="leftArrow cenElement" id="prev" onclick="changeImg(this)">
+								<img src="img/icons/site_icons/arrow_icon.png" alt="" class="arrow" >
 							</div>
-							<div class="rightArrow cenElement">
+							<div class="rightArrow cenElement" id="next" onclick="changeImg(this)">
 								<img src="img/icons/site_icons/arrow_icon.png" alt="" class="arrow">
 							</div>
 						</div>
@@ -138,110 +138,19 @@
 					<img src="img/pacific-dark.png" alt="Pacific Tavern Logo" class="logo">
 				</div>
 				<div class="menuInfo cenText">
-					<div class="snacksAndSaladsContainer" id="snacksAndSaladsContainer">
+					<div class="snacksAndSaladsContainer">
 						<h3 class="uppCase prText">snacks x salads</h3>
-						<!--Change sbFlex to cenFlex if group has only 1x item.-->
-						<div class="itemList disFlex sbFlex">
-							<div class="item disFlex sbFlex">
-								<div class="itemInfo lefText">
-									<h3>Name</h3>
-									<h4>
-										Ingredents Ingred Ingredents Ingredents Ingredents Ingredents Ingredents Ingredents
-									</h4>
-								</div>
-								<div class="itemPrice">
-									<h3>Price</h3>
-								</div>
-							</div>
-							<div class="item disFlex sbFlex">
-								<div class="itemInfo lefText">
-									<h3>Name</h3>
-									<h4>arugula. cherry tomato. shaved almonds. shallot vinaigrette</h4>
-								</div>
-								<div class="itemPrice">
-									<h3>Price</h3>
-								</div>
-							</div>
-							<div class="item disFlex sbFlex">
-								<div class="itemInfo lefText">
-									<h3>Name</h3>
-									<h4>Ingredents</h4>
-								</div>
-								<div class="itemPrice">
-									<h3>Price</h3>
-								</div>
-							</div>
-							<div class="item disFlex sbFlex">
-								<div class="itemInfo lefText">
-									<h3>Name</h3>
-									<h4>Ingredents</h4>
-								</div>
-								<div class="itemPrice">
-									<h3>Price</h3>
-								</div>
-							</div>
-							<div class="item disFlex sbFlex">
-								<div class="itemInfo lefText">
-									<h3>Name</h3>
-									<h4>Ingredents</h4>
-								</div>
-								<div class="itemPrice">
-									<h3>Price</h3>
-								</div>
-							</div>
-							<div class="item disFlex sbFlex">
-								<div class="itemInfo lefText">
-									<h3>Name</h3>
-									<h4>Ingredents</h4>
-								</div>
-								<div class="itemPrice">
-									<h3>Price</h3>
-								</div>
-							</div>
+						<div class="itemList disFlex sbFlex" id="snacksAndSaladsList">
 						</div>
 					</div>
-					<div class="sandwiches" id="sandwiches">
+					<div class="sandwiches">
 						<h3 class="uppCase prText">sandwiches</h3>
-						<!--Change sbFlex to cenFlex if group has only 1x item.-->
-						<div class="itemList disFlex sbFlex">
-							<div class="item disFlex sbFlex">
-								<div class="itemInfo lefText">
-									<h3>Name</h3>
-									<h4>
-										Ingredents Ingred Ingredents Ingredents Ingredents Ingredents Ingredents Ingredents Ingredents Ingredents Ingredents Ingredents
-									</h4>
-								</div>
-								<div class="itemPrice">
-									<h3>Price</h3>
-								</div>
-							</div>
-							<div class="item disFlex sbFlex">
-								<div class="itemInfo lefText">
-									<h3>Name</h3>
-									<h4>
-										Ingredents Ingred Ingredents Ingredents Ingredents Ingredents Ingredents Ingredents
-									</h4>
-								</div>
-								<div class="itemPrice">
-									<h3>Price</h3>
-								</div>
-							</div>
+						<div class="itemList disFlex sbFlex" id="sandwichesList">
 						</div>
 					</div>
-					<div class="mains" id="mains">
+					<div class="mains">
 						<h3 class="uppCase prText">mains</h3>
-						<div class="itemList disFlex sbFlex">
-							<div class="item disFlex sbFlex">
-								<div class="itemInfo lefText">
-									<h3>Name</h3>
-									<h4>
-										Ingredents Ingred Ingredents Ingredents Ingredents Ingredents Ingredents Ingredents
-									</h4>
-								</div>
-								<div class="itemPrice">
-									<h3>Price</h3>
-								</div>
-							</div>
+						<div class="itemList disFlex sbFlex" id="mainsList">
 						</div>
 					</div>
 				</div>
@@ -253,63 +162,19 @@
 					<img src="img/cascade-logo.png" alt="Cascade Bar Logo" class="logo">
 				</div>
 				<div class="drinksInfo cenText whText">
-					<div id="cocktails">
+					<div>
 						<h3 class="uppCase prText">cocktails</h3>
-						<div class="itemList disFlex cenFlex dwnFlex">
-							<div class="item disFlex sbFlex">
-								<div class="itemInfo lefText">
-									<h3>Name</h3>
-									<h4>
-										Ingredents Ingred Ingredents Ingredents Ingredents Ingredents Ingredents Ingredents
-									</h4>
-								</div>
-								<div class="itemPrice">
-									<h3>Price</h3>
-								</div>
-							</div>
-							<div class="item disFlex sbFlex">
-								<div class="itemInfo lefText">
-									<h3>Name</h3>
-									<h4>
-										Ingredents Ingred Ingredents Ingredents Ingredents Ingredents Ingredents Ingredents
-									</h4>
-								</div>
-								<div class="itemPrice">
-									<h3>Price</h3>
-								</div>
-							</div>
+						<div class="itemList disFlex cenFlex dwnFlex" id="cocktailList">
 						</div>
 					</div>
-					<div class="centerDrink" id="wine">
+					<div class="centerDrink">
 						<h3 class="uppCase prText">wine</h3>
-						<div class="itemList disFlex cenFlex dwnFlex">
-							<div class="item disFlex sbFlex">
-								<div class="itemInfo lefText">
-									<h3>Name</h3>
-									<h4>
-										Ingredents Ingred Ingredents Ingredents Ingredents Ingredents Ingredents Ingredents
-									</h4>
-								</div>
-								<div class="itemPrice">
-									<h3>Price</h3>
-								</div>
-							</div>
+						<div class="itemList disFlex cenFlex dwnFlex" id="wineList">
 						</div>
 					</div>
-					<div id="beer">
+					<div>
 						<h3 class="uppCase prText">beer</h3>
-						<div class="itemList disFlex cenFlex dwnFlex">
-							<div class="item disFlex sbFlex">
-								<div class="itemInfo lefText">
-									<h3>Name</h3>
-									<h4>
-										Ingredents Ingred Ingredents Ingredents Ingredents Ingredents Ingredents Ingredents
-									</h4>
-								</div>
-								<div class="itemPrice">
-								</div>
-								<h3>Price</h3>
-							</div>
+						<div class="itemList disFlex cenFlex dwnFlex" id="beerList">
 						</div>
 					</div>
 				</div>

@@ -1,11 +1,16 @@
 /////////////////////////////////////////
-//Hide Header Background When At Top
+//On Load Tasks
 /////////////////////////////////////////
-//Hide Background On Load
 window.onload = function () {
 	hideHeader();
+	addItems()
+	$("main").off("click");
 }
 
+
+/////////////////////////////////////////
+//Hide Header Background When At Top
+/////////////////////////////////////////
 //Check On Scroll
 $(window).scroll(hideHeader);
 
@@ -23,6 +28,25 @@ function hideHeader() {
 		$("#navContainer").removeClass("clBackground");
 	}
 }
+
+/////////////////////////////////////////
+//Section Jump Correctin
+/////////////////////////////////////////
+$(".nav a").click(scroll);
+
+function scroll() {
+		event.preventDefault();
+	$(this).siblings().removeClass('selected');
+	$(this).addClass('selected');
+	let divId = $(this).attr("href").toLowerCase();
+	console.log(divId)
+	let scrollPos = $(divId).offset().top - (100)
+	console.log(scrollPos);
+
+	window.scrollTo(0,scrollPos);
+}
+
+
 
 /////////////////////////////////////////
 //Open/Close Navigation
@@ -46,6 +70,7 @@ function menuOpen() {
 	$("#open").attr("id", "close");
 	$("#open").off("click", menuOpen);
 	$("#close").on("click", menuClose);
+	$("main").on("click", menuClose);
 }
 
 //Close Navigation Function
@@ -60,6 +85,7 @@ function menuClose() {
 	$("#close").attr("id", "open");
 	$("#close").off("click", menuClose);
 	$("#open").on("click", menuOpen);
+	$("main").off("click", menuClose);
 
 }
 
@@ -81,6 +107,7 @@ function modalOpen() {
 	$("#reservationModal").scrollTop(0);
 	$("body").addClass("bgFreeze");
 	$("main").addClass("bgDarken");
+	$("main").on("click", modalClose);
 }
 
 //Close Reservation Modal Function
@@ -94,6 +121,7 @@ function modalClose() {
 	$("body").removeClass("bgFreeze");
 	$("main").removeClass("bgDarken");
 	$("#reservationModal").addClass("remElement");
+	$("main").off("click", modalClose);
 	location.reload();
 }
 
@@ -324,7 +352,6 @@ function phoneValidation() {
 
 	numbersOnly(this);
 
-	console.log()
 }
 
 //Check Guests Charecters
@@ -388,14 +415,18 @@ function checkReservation() {
 				adultGuests,
 				kidGuests
 			   ]
+
 	clearWarnings()
 	check = checkGuestsCount()
 	for (i = 0; i < info.length; i++) {
 		check = checkInfo(info[i]);
 	}
-	console.log(check);
+
+	console.log(check)
 	if (check === true) {
 		confirmReservation()
+	} else {
+		event.preventDefault();
 	}
 }
 
@@ -419,13 +450,12 @@ function checkInfo(info) {
 	} else {
 		check = true
 	}
-		check = true
+	check = false;
 	return check;
 }
 
 //Confirm Reservation
 function confirmReservation() {
-console.log("goodJob")
 
 	let modal = document.getElementById('reservationModal');
 
@@ -435,7 +465,7 @@ console.log("goodJob")
 	let adultCount = parseInt(0 + $("#adultGuests").val());
 	let kidCount = parseInt(0 + $("#kidGuests").val());
 	let total = adultCount + kidCount;
-	
+
 	selectedMonth = monthAdjustIndex(selectedMonth)
 	let date = new Date(selectedYear, selectedMonth, selectedDay);
 	let dayName = date.toString().substring(0, 3);
@@ -444,27 +474,146 @@ console.log("goodJob")
 
 	modal.innerHTML = '';
 	modal.innerHTML = '<div>' +
-				'<h3 class="uppCase prText ligText">Reservation Made</h3>' +
-			'</div>' +
-			'<div>' +
-				"<h3 id='exceedWarning'>You'r reservation for " + total + ' guests on' + '<br>' + dayName + ' ' + selectedMonth + ' ' +selectedDay + ', ' + selectedYear + " has been created. <br> We can't wait to see you.</h3>" +
-			'</div>';
+		'<h3 class="uppCase prText ligText">Reservation Made</h3>' +
+		'</div>' +
+		'<div>' +
+		"<h3 id='exceedWarning'>You'r reservation for " + total + ' guests on' + '<br>' + dayName + ' ' + selectedMonth + ' ' + selectedDay + ', ' + selectedYear + " has been created. <br> We can't wait to see you.</h3>" +
+		'</div>';
 }
-
 
 
 
 /////////////////////////////////////////
 //Add Items To Menu and Drinks
 /////////////////////////////////////////
-//Check Item Type
-//Add To Menu HTML
-//Add To Drinks HTML
+function addItems() {
+	let snacksAndSalads = document.getElementById('snacksAndSaladsList');
+	let sandwiches = document.getElementById('sandwichesList');
+	let mains = document.getElementById('mainsList');
+	let cocktails = document.getElementById('cocktailList');
+	let wines = document.getElementById('wineList');
+	let beers = document.getElementById('beerList');
+	let sectionList = [snacksAndSalads,
+							sandwiches,
+							mains,
+							cocktails,
+							wines,
+							beers
+								]
+	let itemList = [{
+			array: snacksAndSaladsList,
+			section: "snacksAndSaladsList",
+			type: "food"
+		},
+		{
+			array: sandwichesList,
+			section: "sandwichesList",
+			type: "food"
+		},
+		{
+			array: mainsList,
+			section: "mainsList",
+			type: "food"
+		},
+		{
+			array: cocktailList,
+			section: "cocktailList",
+			type: "drink"
+		},
+		{
+			array: wineList,
+			section: "wineList",
+			type: "drink"
+		},
+		{
+			array: beerList,
+			section: "beerList",
+			type: "drink"
+		}
+						]
+	//Add To HTML
+	for (i = 0; i < sectionList.length; i++) {
+		for (x = 0; x < itemList.length; x++) {
+			//Checks if product array matchs the section
+			if ($(sectionList[i]).attr("id") === itemList[x].section) {
+				let sectionProductList = itemList[x].array;
+				let start;
 
+				for (y = 0; y < sectionProductList.length; y++) {
+					//Checks if section has only one product to add correct stlye
+					if (sectionProductList.length === 1 && itemList[x].type !== "drink") {
+						start = '<div class = "item disFlex cenFlex" style="margin: .5rem auto;">'
+					} else {
+						start = '<div class = "item disFlex sbFlex">'
+					}
+					//Adds the product info to the section from the array
+					sectionList[i].innerHTML += start +
+						'<div class = "itemInfo lefText">' +
+						'<h3 >' + sectionProductList[y].name + '</h3>' +
+						'<h4>' + sectionProductList[y].ingredents + '</h4>' +
+						'</div>' +
+						'<div class = "itemPrice">' +
+						'<h3>' + sectionProductList[y].price + '</h3>' +
+						'</div>'
+					'</div>'
+
+				}
+			}
+		}
+	}
+}
 
 
 /////////////////////////////////////////
 //Gallery Controls
 /////////////////////////////////////////
-//Prev Button
-//Next Button
+function changeImg(a) {
+	let image = $(".imgGallery");
+	let imgFocus;
+	let imgNext;
+	let imgPrevious;
+	let changeAMT;
+	let start;
+	let end;
+
+	for (i = 0; i < image.length; i++) {
+		let total = image.length - 1;
+		
+		if ($(a).attr("id") === "prev") {
+			changeAMT = parseInt([i]) - 1;
+			end = 0;
+			start = 6;
+		} else 	if ($(a).attr("id") === "next") {
+			changeAMT = parseInt([i]) + 1;
+			end = 6;
+			start = 0;		}
+		
+		if ($(image[i]).hasClass("imgNext")) {
+			if (i === end) {
+				imgNext = start;
+			} else {
+				imgNext = changeAMT;
+			}
+			$(image[i]).removeClass("imgNext");
+			
+		} else if ($(image[i]).hasClass("imgFocus")) {
+			if (i === end) {
+				imgFocus = start;
+			} else {
+				imgFocus = changeAMT;
+			}
+			$(image[i]).removeClass("imgFocus");
+			
+		} else if ($(image[i]).hasClass("imgPrevious")) {
+			if (i === end) {
+				imgPrevious = start;
+			} else {
+				imgPrevious = changeAMT;
+			}
+			$(image[i]).removeClass("imgPrevious");
+		}
+	}
+	$(image[imgNext]).addClass("imgNext");
+	$(image[imgFocus]).addClass("imgFocus");
+	$(image[imgPrevious]).addClass("imgPrevious");
+}

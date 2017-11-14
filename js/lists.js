@@ -76,7 +76,7 @@ const sun = [
 //Menu List
 /////////////////////////////////////////
 //Snacks and Salads
-const snacksAndSalads = [
+const snacksAndSaladsList = [
 	{
 		name: "Primavera Salad",
 		ingredents: "arugula, cherry tomato, shaved almonds, shallot vinaigrette",
@@ -93,7 +93,7 @@ const snacksAndSalads = [
 ]
 
 //Sandwhiches
-const sandwhiches = [
+const sandwichesList = [
 	{
 		name: "Alpine",
 		ingredents: "fontina, gruyere, truffle oil on multigrain toast",
@@ -122,7 +122,7 @@ const sandwhiches = [
 ]
 
 //Mains
-const mains = [
+const mainsList = [
 	{
 		name: "Lobster Bolognese",
 		ingredents: "linguini, lobster tail, herbs in tomato & garlic broth",
@@ -152,7 +152,7 @@ const mains = [
 //Drinks List
 /////////////////////////////////////////
 //Cocktails
-const cocktails = [
+const cocktailList = [
 	{
 		name: "Manhattan",
 		ingredents: "black rum, ginger beer, lime",
@@ -185,7 +185,7 @@ const cocktails = [
 ]
 
 //Wine
-const wine = [
+const wineList = [
 	{
 		name: "Sauvignon Blanc",
 		ingredents: "cloudy bay, new zealand, 2012",
@@ -218,7 +218,7 @@ const wine = [
 ]
 
 //Beer
-const beer = [
+const beerList = [
 	{
 		name: "Lagunitas",
 		ingredents: "ipa, california",
