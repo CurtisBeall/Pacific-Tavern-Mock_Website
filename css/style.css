@@ -310,7 +310,7 @@ a, button {
 }
 
 .logo {
-	width: 80%;
+	width: 100%;
 	max-width: 15rem;
 	background-size: contain;
 	background-repeat: no-repeat;
@@ -403,10 +403,10 @@ a, button {
 	transition: -webkit-transform .5s, transform .5s;
 }
 
-.logoNav a {
-    width: 100%;
-    height: 100%;
+nav a {
+    margin: 0 auto;
 }
+
 
 
 
@@ -850,7 +850,7 @@ a, button {
 
 	.navContainer h3 {
 		font-size: inherit;
-		margin: .5rem;
+        margin: 0;
 	}
 
 	.logoNav{
