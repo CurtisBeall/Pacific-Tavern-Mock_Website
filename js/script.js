@@ -85,7 +85,7 @@ function scrollCorrection() {
             } else {
                 scrollPos = $(divId).offset().top - 100;
             }
-            window.scrollTo(0, scrollPos);
+        $("html, body").animate({scrollTop: scrollPos}, 1000);
         }
     //If Reseravation modal is closed
     } else {
