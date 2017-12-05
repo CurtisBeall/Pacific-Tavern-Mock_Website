@@ -279,7 +279,9 @@ h5 {
 	margin: 0;
 }
 body {
-overflow-y: scroll;}
+/*overflow-y: scroll;*/
+    overflow-x: hidden;
+}
 
 header {
 	position: absolute;
@@ -399,6 +401,11 @@ a, button {
 	-webkit-transform: rotate(-45deg) translateY(-1.25rem);
 	transform: rotate(-45deg) translateY(-1.25rem);
 	transition: -webkit-transform .5s, transform .5s;
+}
+
+.logoNav a {
+    width: 100%;
+    height: 100%;
 }
 
 
@@ -595,7 +602,7 @@ a, button {
 	right: 0;
 	margin: 0 auto;
 	padding: .5rem 1rem;
-	z-index: 999;
+	z-index: 1001;
 	overflow-y: auto;
 }
 
@@ -847,7 +854,7 @@ a, button {
 	}
 
 	.logoNav{
-		display: block;
+		display: flex;
 		flex-grow: 1;
 	}
 	
