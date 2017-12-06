@@ -815,7 +815,8 @@ nav a {
 		width: 100%;
 		max-width: 100rem;
 		height: 9rem;
-		-webkit-transform: translateX(0) translateY(0);
+        padding-left: 0rem;
+        -webkit-transform: translateX(0) translateY(0);
 		transform: translateX(0) translateY(0);
 		display: -webkit-box;
 		display: -ms-flexbox;
