@@ -409,15 +409,15 @@ function phoneValidation() {
 //Check Guests Charecters
 function numbersOnly(input) {
     if (input.value.match(/[^0-9]/g) && $(input).attr("id") === "adultGuests") {
-        adultLabel.innerHTML += '<h4 class="bolText disFlex warning" id="remove">Numbers Only</h4>'
+        adultLabel.innerHTML += '<p class="s4 bolText disFlex warning" id="remove">Numbers Only</p>'
         input.value = input.value.replace(/[^0-9]/g, '');
         check = false
     } else if (input.value.match(/[^0-9]/g) && $(input).attr("id") === "kidGuests") {
-        kidLabel.innerHTML += '<h4 class="bolText disFlex warning" id="remove">Numbers Only</h4>'
+        kidLabel.innerHTML += '<p class="s4 bolText disFlex warning" id="remove">Numbers Only</p>'
         input.value = input.value.replace(/[^0-9]/g, '');
         check = false
     } else if (input.value.match(/[^0-9.-/(/)]/g) && $(input).attr("id") === "phone") {
-        phoneLabel.innerHTML += '<h4 class="bolText disFlex warning" id="remove">Numbers Only</h4>'
+        phoneLabel.innerHTML += '<p class="s4 bolText disFlex warning" id="remove">Numbers Only</p>'
         input.value = input.value.replace(/[^0-9.-/(/)]/g, '');
         check = false
     } else {
@@ -526,10 +526,10 @@ function confirmReservation() {
 
     modal.innerHTML = '';
     modal.innerHTML = '<div>' +
-        '<h3 class="uppCase prText ligText">Reservation Made</h3>' +
+        '<h3 class="s3 uppCase prText ligText">Reservation Made</h3>' +
         '</div>' +
         '<div>' +
-        "<h3 id='exceedWarning'>You'r reservation for " + total + ' guests on' + '<br>' + dayName + ' ' + selectedMonth + ' ' + selectedDay + ', ' + selectedYear + " has been created. <br> We can't wait to see you.</h3>" +
+        "<h3 class='s3' id='exceedWarning'>You'r reservation for " + total + ' guests on' + '<br>' + dayName + ' ' + selectedMonth + ' ' + selectedDay + ', ' + selectedYear + " has been created. <br> We can't wait to see you.</h3>" +
         '</div>';
 }
 
@@ -601,11 +601,11 @@ function addItems() {
                     //Adds the product info to the section from the array
                     sectionList[i].innerHTML += start +
                         '<div class = "itemInfo lefText">' +
-                        '<h3 >' + sectionProductList[y].name + '</h3>' +
-                        '<h4>' + sectionProductList[y].ingredents + '</h4>' +
+                        '<h3 class="s3">' + sectionProductList[y].name + '</h3>' +
+                        '<p class="s4">' + sectionProductList[y].ingredents + '</p>' +
                         '</div>' +
                         '<div class = "itemPrice">' +
-                        '<h3>' + sectionProductList[y].price + '</h3>' +
+                        '<h3 class="s3">' + sectionProductList[y].price + '</h3>' +
                         '</div>'
                     '</div>'
 
