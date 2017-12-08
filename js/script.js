@@ -7,6 +7,12 @@ window.onload = function () {
     $("main").off("click");
 }
 
+/////////////////////////////////////////
+//On Orientation Change
+/////////////////////////////////////////
+$( window ).on( "orientationchange", function( event ) {
+     menuClose();
+});
 
 /////////////////////////////////////////
 //Hide Header Background When At Top
@@ -108,9 +114,10 @@ $("main").click(menuClose);
 
 //Open Navigation Function
 function menuOpen() {
-    let reservationCheck = $("#reservationModal").hasClass("remElement")
+    let modalCheck = $("body").hasClass("bgFreeze")
 
-    if (reservationCheck === true) {
+    if (modalCheck === false) {
+
         $(".navContainer").addClass("navContainerOpen");
         $(".arrows").addClass("arrowsOpen");
         $(".arrowTop").addClass("arrowTopOpen");
@@ -122,23 +129,24 @@ function menuOpen() {
         $("#close").on("click", menuClose);
         $("main").on("click", menuClose);
     }
-
 }
 
 //Close Navigation Function
 function menuClose() {
+    let menuCheck = $(".navContainer").hasClass("navContainerOpen");
 
-    $(".navContainer").removeClass("navContainerOpen");
-    $(".arrows").removeClass("arrowsOpen");
-    $(".arrowTop").removeClass("arrowTopOpen");
-    $(".arrowBottom").removeClass("arrowBottomOpen");
-    $("body").removeClass("bgFreeze");
-    $("main").removeClass("bgDarken");
-    $("#close").attr("id", "open");
-    $("#close").off("click", menuClose);
-    $("#open").on("click", menuOpen);
-    $("main").off("click", menuClose);
-
+    if (menuCheck === true) {
+        $("body").removeClass("bgFreeze");
+        $("main").removeClass("bgDarken");
+        $(".navContainer").removeClass("navContainerOpen");
+        $(".arrows").removeClass("arrowsOpen");
+        $(".arrowTop").removeClass("arrowTopOpen");
+        $(".arrowBottom").removeClass("arrowBottomOpen");
+        $("#close").attr("id", "open");
+        $("#close").off("click", menuClose);
+        $("#open").on("click", menuOpen);
+        $("main").off("click", menuClose);
+    }
 }
 
 /////////////////////////////////////////
