@@ -823,7 +823,6 @@ nav a {
 	}
 	
 	.navContainer {
-        position: relative;
 		width: 100%;
 		max-width: 100rem;
 		height: 9rem;
