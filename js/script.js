@@ -10,8 +10,8 @@ window.onload = function () {
 /////////////////////////////////////////
 //On Orientation Change
 /////////////////////////////////////////
-$( window ).on( "orientationchange", function( event ) {
-     menuClose();
+$(window).on("orientationchange", function (evt) {
+    menuClose();
 });
 
 /////////////////////////////////////////
@@ -42,19 +42,31 @@ $(window).scroll(scroll);
 
 function scroll() {
     let scrollPos = $(document).scrollTop();
+    let restaurantPos = $("#restaurant").offset().top-200;
+    let galleryPos = $("#gallery").offset().top-200;
+    let menuPos = $("#menu").offset().top-200;
+    let drinksPos = $("#drinks").offset().top-200;
+    let reservationsPos = $("#reservations").offset().top-200;
+
+//    if ($(".navContainer").hasClass("navContainerOpen")) {
+//        menuClose();
+//        scrollPos = $(divId).offset().top;
+//    } else {
+//        scrollPos = $(divId).offset().top - 100;
+//    }
 
     $(".nav a").removeClass('selected');
-    if (scrollPos < 525) {
+    if (scrollPos < restaurantPos) {
         $('a[href="#home"]').addClass('selected');
-    } else if (scrollPos > 525 && scrollPos < 1235) {
+    } else if (scrollPos > restaurantPos && scrollPos < galleryPos) {
         $('a[href="#restaurant"]').addClass('selected');
-    } else if (scrollPos > 1235 && scrollPos < 1930) {
+    } else if (scrollPos > galleryPos && scrollPos < menuPos) {
         $('a[href="#gallery"]').addClass('selected');
-    } else if (scrollPos > 1930 && scrollPos < 2900) {
+    } else if (scrollPos > menuPos && scrollPos < drinksPos) {
         $('a[href="#menu"]').addClass('selected');
-    } else if (scrollPos > 2900 && scrollPos < 3800) {
+    } else if (scrollPos > drinksPos && scrollPos < reservationsPos) {
         $('a[href="#drinks"]').addClass('selected');
-    } else if (scrollPos > 3800) {
+    } else if (scrollPos > reservationsPos) {
         $('a[href="#reservations"]').addClass('selected');
     }
 }
@@ -68,7 +80,7 @@ function scroll() {
 $(".nav a").click(scrollCorrection);
 
 //Section Pos Jump
-function scrollCorrection() {
+function scrollCorrection(evt) {
     let divID;
     let scrollPos;
     let reservationCheck = $("#reservationModal").hasClass("remElement")
@@ -78,10 +90,10 @@ function scrollCorrection() {
     if (reservationCheck === true) {
         //If the logo is clicked
         if (logoCheck === true) {
-            event.stopPropagation();
-        //If the nav links are clicked
+            evt.stopPropagation();
+            //If the nav links are clicked
         } else {
-            event.preventDefault();
+            evt.preventDefault();
             $(".nav").removeClass('selected');
             $(this).addClass('selected');
             divId = $(this).attr("href").toLowerCase();
@@ -91,12 +103,14 @@ function scrollCorrection() {
             } else {
                 scrollPos = $(divId).offset().top - 100;
             }
-        $("html, body").animate({scrollTop: scrollPos}, 1000);
+            $("html, body").animate({
+                scrollTop: scrollPos
+            }, 1000);
         }
-    //If Reseravation modal is closed
+        //If Reseravation modal is closed
     } else {
-        event.preventDefault();
-        event.stopPropagation();
+        evt.preventDefault();
+        evt.stopPropagation();
     }
 }
 
@@ -160,8 +174,8 @@ $("#reservationsButton").click(setCurrentDate);
 $("main").click(modalClose);
 
 //Open Reservation Modal Function
-function modalOpen() {
-    event.stopPropagation();
+function modalOpen(evt) {
+    evt.stopPropagation();
 
     $("#reservationModal").removeClass("remElement");
     $("#reservationModal").scrollTop(0);
@@ -182,7 +196,7 @@ function modalClose() {
     $("main").removeClass("bgDarken");
     $("#reservationModal").addClass("remElement");
     $("main").off("click", modalClose);
-    location.reload();
+    $("#reservationModal").find("input[type=text], textarea").val("");
 }
 
 
@@ -462,7 +476,8 @@ function checkGuestsCount() {
 //Submit Reservation
 /////////////////////////////////////////
 //Check Reservation
-function checkReservation() {
+function checkReservation(evt) {
+
     let check = false;
     let name = document.getElementById('underName');
     let email = document.getElementById('email')
@@ -482,11 +497,10 @@ function checkReservation() {
         check = checkInfo(info[i]);
     }
 
-    console.log(check)
     if (check === true) {
         confirmReservation()
     } else {
-        event.preventDefault();
+        evt.preventDefault();
     }
 }
 
